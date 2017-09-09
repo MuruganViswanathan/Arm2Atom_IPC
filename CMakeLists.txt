@@ -29,7 +29,7 @@ endif ()
 
 link_directories ( ${LIBRARY_DIR} ${LIBRARY_DIR64} )
 
-add_subdirectory(server)
-add_subdirectory(client)
+add_subdirectory(Socket/server)
+add_subdirectory(Socket/client)
 
 
