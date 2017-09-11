@@ -17,16 +17,16 @@
 #include <sys/time.h>
 
 #define MV_PORT 50123
-#define SERVERADDR "127.0.0.1"
+//#define SERVERADDR "127.0.0.1"
 #define PAYLOAD_SIZE 1024
 #define TOTAL_ROUNDTRIPS 100
 
 int main(int argc, char* argv[])
 {
     int ret = 0;
-    if(argc < 2)
+    if(argc != 2)
     {
-        printf("[CLIENT SOCKET] Usage: ./%s <name> \n", argv[0]);
+        printf("[CLIENT SOCKET] Usage: ./%s <server IP4> \n", argv[0]);
         return 1;
     }
 
@@ -42,7 +42,8 @@ int main(int argc, char* argv[])
     struct sockaddr_in addr = {0};
     addr.sin_family = AF_INET;
     addr.sin_port = htons(MV_PORT);
-    if(inet_pton(AF_INET, SERVERADDR, &addr.sin_addr) <= 0)
+    //if(inet_pton(AF_INET, SERVERADDR, &addr.sin_addr) <= 0)
+    if(inet_pton(AF_INET, argv[1], &addr.sin_addr) <= 0)
     {
         perror("[CLIENT SOCKET] Error in address!\n");
         return 1;

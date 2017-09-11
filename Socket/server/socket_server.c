@@ -80,7 +80,6 @@ int main()
     do
     {
         valread = read(new_socket, data, DATASIZE);
-        //printf("[SERVER SOCKET] read %d bytes on connection %d : \n%s\n", valread, count, data); fflush(stdout);
         //sleep(1);
         send(new_socket , data , strlen(data) , 0 );
     }while (valread);
